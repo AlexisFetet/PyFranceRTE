@@ -3,7 +3,7 @@
 # pylint: disable=R0903
 
 """
-This file contains all utilities for the pyFranceRTE package.
+This file contains all utilities related to keys for the pyFranceRTE package.
 """
 
 import base64
@@ -12,9 +12,29 @@ from py_france_rte.utils import is_str_instance
 
 
 class Key():
-
     """
-    This class is your application key for the API.
+    Key(id_client: str, id_secret: str) -> Key:
+
+    Class holding your Application identifications.
+
+    Parameters
+    ----------
+    id_client : str
+        The client id provided by data.rte-france.com
+        for your application
+    id_secret : str
+        The secret id provided by data.rte-france.com
+        for your application
+
+    Returns
+    -------
+    Key
+        An instance of Key class
+
+    Raises
+    ------
+    TypeError
+        If a parameter is of an unexpected type
     """
 
     def __init__(self, id_client: str, id_secret: str) -> None:
