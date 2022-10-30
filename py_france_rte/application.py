@@ -16,7 +16,46 @@ from py_france_rte.utils import SUPPORTED_APIS
 class Application(BaseApplication):
 
     """
-    An application class to interract with the France RTE APIs
+    Application(
+            id_client: str,
+            id_secret: str,
+            subscribed_apis: "list[str]",
+            timeout: Optional[int] = 10) -> Application:
+
+    This is the class representing an application to communicate with RTE APIs.
+    You need to create the applications on data.rte-france.com first in order to
+    get access to the API. Your application identifiers can be found on
+    data.rte-france.fr
+
+    Parameters
+    ----------
+    id_client : str
+        The application client ID
+    id_secret : str
+        The application secret ID
+    subscribed_apis : list[str]
+        The list of all APIs the application is subscribed to and can use
+    timeout : int, default: 10
+        The timeout value for http requests, defaults to 10s
+
+    Returns
+    -------
+    Application
+        An application instance
+
+    Raises
+    ------
+    RuntimeError
+        If an error occurs at run time, like methods parameters not
+        following the APIs specifications
+    ValueError
+        If a provided parameter is of unexpected type
+    ComError
+        If an error occurs when requesting data from an API,
+        may happen if you reached your quota
+    NoAccessError
+        If the application tries to access an API it
+        was not declared to be registered to
     """
 
     def __init__(
@@ -31,7 +70,20 @@ class Application(BaseApplication):
 
     def register_apis(self, subscribed_apis: "list[str]") -> None:
         """
-        Register access to APIs
+        register_apis(self, subscribed_apis: "list[str]") -> None
+
+        Overwrite all application instance methods for provided supported APIs
+
+        Parameters
+        ----------
+        subscribed_apis : list[str]
+            List of all APIs the application can use, require prior subscription on
+            data.rte-france.com
+
+        Raises
+        ------
+        RuntimeError
+            If a provided API is not supported
         """
 
         for api_ in subscribed_apis:
