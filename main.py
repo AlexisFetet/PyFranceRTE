@@ -25,8 +25,8 @@ if __name__ == "__main__":
 
     test = Application(client_id, secret_id, APIS)
 
-    START_DATE = "2015-06-08T00:00:00+02:00"
-    END_DATE = "2015-06-11T00:00:00+02:00"
+    START_DATE = "2022-06-08T00:00:00+02:00"
+    END_DATE = "2022-06-11T00:00:00+02:00"
     PRODUCTION_TYPE = "HYDRO"
     PRODUCTION_SUBTYPE = "HYDRO_PUMPED_STORAGE"
 
