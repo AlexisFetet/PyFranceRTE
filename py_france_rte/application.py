@@ -14,7 +14,6 @@ from py_france_rte.utils import SUPPORTED_APIS
 
 
 class Application(BaseApplication):
-
     """
     Application(
             id_client: str,
