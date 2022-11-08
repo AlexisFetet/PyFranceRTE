@@ -146,14 +146,11 @@ def request_water_reserves(
         options_.append(prepare_date_request(start_date, end_date))
 
     url_ = prepare_url_with_options(WATER_RESERVES_URL, options_)
-    print(url_)
 
     signal_response = requests.get(
         url=url_,
         headers=header_,
         timeout=self.timeout)
-
-    print(signal_response.json())
 
     verify_response_code(
         code=signal_response.status_code,
