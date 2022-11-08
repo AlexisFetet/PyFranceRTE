@@ -135,7 +135,7 @@ def request_water_reserves(
     Application function overwrite to request water reserves
     """
 
-    verify_dates(start_date, end_date, 366, 1, "2014-12-08")
+    verify_dates(start_date, end_date, 366, 7, "2014-12-08")
 
     self.verify_token()
     header_ = generate_header(self.oauth_token)
@@ -162,14 +162,15 @@ def request_water_reserves(
     return signal_response.json()
 
 
-def request_generation_mix_15min_time_scale(
+def request_generation_mix_15min(
         self: BaseApplication,
         start_date: Optional[str] = None,
         end_date: Optional[str] = None,
         production_type: Optional[str] = None,
         production_subtype: Optional[str] = None) -> "dict":
     """
-    Application function overwrite to request actual generation mix with 15min scale
+    Application function overwrite to request
+    actual generation mix with 15min scale
     """
 
     verify_dates(start_date, end_date, 14, 1, "2017-01-01")
@@ -222,8 +223,8 @@ def prepare_type_request(
             # Verifying subtype is ok with given type
             if production_subtype not in PRODUCTION_SUBTYPES[production_type]:
                 raise ValueError(
-                    f"You provided invalid subtype production {production_subtype} "
-                    f"with type {production_type} "
+                    f"You provided invalid subtype production "
+                    f"{production_subtype} with type {production_type} "
                     f"to API Actual Generation")
             options_.append(f"production_subtype={production_subtype}")
         else:
@@ -236,8 +237,8 @@ def prepare_type_request(
                     break
             if not known_subtype_:
                 raise ValueError(
-                    f"You provided unknown subtype production {production_subtype} "
-                    f"to API Actual Generation")
+                    f"You provided unknown subtype production "
+                    f"{production_subtype} to API Actual Generation")
             options_.append(f"production_type={production_type}")
             options_.append(f"production_subtype={production_subtype}")
 

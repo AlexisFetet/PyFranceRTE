@@ -1,27 +1,41 @@
 repos:
-    - repo: https://github.com/AlexisFetet/conda_pre_commit
-      rev: fde323bd03092581fbd8295f5445cd125320a35d
+    - repo: local
       hooks:
-      - id: conda-pycln
-        args:
-          - -a 
-          - -s
-      - id: conda-isort
-      - id: conda-autopep8
-        args:
-          - --in-place 
-          - --global-config=.flake8 
-          - --max-line-length=79 
-          - -a 
-          - -a 
-          - -r
-      - id: conda-pylint
-        additional_dependencies:
-          - -c
-          - conda-forge
-          - python=3.8.5
-          - python-dotenv=0.21.0
-          - requests=2.28.1
-        args:
-          - -s=no
+        - id: conda-pycln
+          name: pycln
+          entry: pycln
+          language: conda
+          types:
+            - python
+
+        - id: conda-isort
+          name: isort
+          entry: isort
+          language: conda
+          types:
+            - python
+
+        - id: conda-autopep8
+          name: autopep8
+          entry: autopep8
+          language: conda
+          types:
+            - python
+          args:
+            - --in-place 
+            - --global-config=.flake8 
+            - --max-line-length=79 
+            - -a 
+            - -a 
+            - -r
+
+        - id: conda-pylint
+          name: pylint
+          entry: pylint
+          language: conda
+          types:
+            - python
+          args:
+            - -s=no
+            - --max-line-length=79
         

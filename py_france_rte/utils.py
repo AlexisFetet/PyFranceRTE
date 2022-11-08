@@ -88,7 +88,8 @@ def is_str_instance(variable: Any, name: str) -> None:
     """
     if not isinstance(variable, str):
         raise TypeError(
-            f"Invalid data type for {name}, must be str and is {type(variable)}.")
+            f"Invalid data type for {name}, "
+            f"must be str and is {type(variable)}.")
 
 
 def is_int_instance(variable: Any, name: str) -> None:
@@ -111,7 +112,8 @@ def is_int_instance(variable: Any, name: str) -> None:
     """
     if not isinstance(variable, int):
         raise TypeError(
-            f"Invalid data type for {name}, must be int and is {type(variable)}.")
+            f"Invalid data type for {name}, "
+            f"must be int and is {type(variable)}.")
 
 
 def verify_dates(
@@ -134,10 +136,12 @@ def verify_dates(
     Parameters
     ----------
     start_date : Any
-        The start date of the request, must be a str at format "YYYY-MM-DDThh:mm:sszzzzzz"
+        The start date of the request, must be a str
+        at format "YYYY-MM-DDThh:mm:sszzzzzz"
         exemple : "2015-06-08T00:00:00+02:00"
     end_date : Any
-        The end date of the request, must be a str at format "YYYY-MM-DDThh:mm:sszzzzzz"
+        The end date of the request, must be a str
+        at format "YYYY-MM-DDThh:mm:sszzzzzz"
         exemple : "2015-06-08T00:00:00+02:00"
     max_days : int
         The maximum duration between start_date and end_date, in day(s)
@@ -149,7 +153,8 @@ def verify_dates(
     Raises
     ------
     ValueError
-        If a parameter is not of expected type, or dates are invalid given the parameters
+        If a parameter is not of expected type,
+        or dates are invalid given the parameters
     RuntimeError
         If only start_date or end_date was provided
     """
@@ -159,7 +164,8 @@ def verify_dates(
             datetime.datetime.strptime(start_date, DATE_FORMAT)
         except ValueError as err:
             raise ValueError(
-                f"Invalid date format for start_date, requires {DATE_FORMAT}") from err
+                f"Invalid date format for start_date, requires {DATE_FORMAT}"
+            ) from err
 
     if end_date:
         is_str_instance(end_date, "end_date")
@@ -167,7 +173,8 @@ def verify_dates(
             datetime.datetime.strptime(end_date, DATE_FORMAT)
         except ValueError as err:
             raise ValueError(
-                f"Invalid date format for end_date, requires {DATE_FORMAT}") from err
+                f"Invalid date format for end_date, requires {DATE_FORMAT}"
+            ) from err
 
     if start_date and not end_date or end_date and not start_date:
         raise RuntimeError(
@@ -190,10 +197,12 @@ def verify_dates(
 
         if start_ < min_date_:
             raise ValueError(
-                f"start_date ({start_date}) is earlier than min_date {min_date}")
+                f"start_date ({start_date}) is earlier "
+                f"than min_date {min_date}")
         if end_ > now_:
             raise ValueError(
-                f"end_date ({end_date})is later than current supported time {now_}")
+                f"end_date ({end_date})is later "
+                f"than current supported time {now_}")
         if start_ > end_:
             raise ValueError(
                 f"start_date ({start_date}) is later than end_date {end_date}")
@@ -208,7 +217,8 @@ def verify_dates(
         if duration_.days < min_days:
             raise ValueError(
                 f"Duration between start_date ({start_date}) and "
-                f"end_date ({end_date}) is less than min_days ({min_days} days)")
+                f"end_date ({end_date}) "
+                f"is less than min_days ({min_days} days)")
 
 
 def prepare_date_request(start_date: str, end_date: str) -> str:
@@ -220,10 +230,12 @@ def prepare_date_request(start_date: str, end_date: str) -> str:
     Parameters
     ----------
     start_date : str
-        The start date of the request, must be at format "YYYY-MM-DDThh:mm:sszzzzzz"
+        The start date of the request,
+        must be at format "YYYY-MM-DDThh:mm:sszzzzzz"
         exemple : "2015-06-08T00:00:00+02:00"
     end_date : str
-        The end date of the request, must be at format "YYYY-MM-DDThh:mm:sszzzzzz"
+        The end date of the request,
+        must be at format "YYYY-MM-DDThh:mm:sszzzzzz"
         exemple : "2015-06-08T00:00:00+02:00"
 
     Returns

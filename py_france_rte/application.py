@@ -3,7 +3,8 @@
 # pylint: disable=C0415
 
 """
-This file contains the Application class, to use when interracting with the France RTE APIs
+This file contains the Application class,
+to use when interracting with the France RTE APIs
 """
 
 import types
@@ -22,9 +23,9 @@ class Application(BaseApplication):
             timeout: Optional[int] = 10) -> Application:
 
     This is the class representing an application to communicate with RTE APIs.
-    You need to create the applications on data.rte-france.com first in order to
-    get access to the API. Your application identifiers can be found on
-    data.rte-france.fr
+    You need to create the applications on data.rte-france.com
+    first in order to get access to the API. Your application identifiers
+    can be found on data.rte-france.fr
 
     Parameters
     ----------
@@ -76,8 +77,8 @@ class Application(BaseApplication):
         Parameters
         ----------
         subscribed_apis : list[str]
-            List of all APIs the application can use, require prior subscription on
-            data.rte-france.com
+            List of all APIs the application can use,
+            require prior subscription on data.rte-france.com
 
         Raises
         ------
@@ -100,13 +101,12 @@ class Application(BaseApplication):
                 from py_france_rte.modules.actual_generation import (
                     request_actual_generation_per_type,
                     request_actual_generation_per_unit,
-                    request_generation_mix_15min_time_scale,
-                    request_water_reserves)
+                    request_generation_mix_15min, request_water_reserves)
                 self.request_actual_generation_per_unit = types.MethodType(
                     request_actual_generation_per_unit, self)
                 self.request_actual_generation_per_type = types.MethodType(
                     request_actual_generation_per_type, self)
-                self.request_generation_mix_15min_time_scale = types.MethodType(
-                    request_generation_mix_15min_time_scale, self)
+                self.request_generation_mix_15min = types.MethodType(
+                    request_generation_mix_15min, self)
                 self.request_water_reserves = types.MethodType(
                     request_water_reserves, self)

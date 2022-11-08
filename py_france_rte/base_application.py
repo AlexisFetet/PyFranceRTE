@@ -115,7 +115,7 @@ class BaseApplication():
         """
         raise NoAccessError("No access declared to Actual Generation API")
 
-    def request_generation_mix_15min_time_scale(
+    def request_generation_mix_15min(
             self,
             start_date: Optional[str] = None,
             end_date: Optional[str] = None,
