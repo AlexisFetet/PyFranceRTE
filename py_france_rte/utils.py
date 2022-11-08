@@ -211,7 +211,7 @@ def verify_dates(
 
         if duration_.days > max_days:
             raise ValueError(
-                f"Duration between start_date ({start_date}) and"
+                f"Duration between start_date ({start_date}) and "
                 f"end_date ({end_date}) exceeds max_days ({max_days} days)")
 
         if duration_.days < min_days:
