@@ -25,8 +25,8 @@ if __name__ == "__main__":
 
     test = Application(client_id, secret_id, APIS)
 
-    START_DATE = "2022-06-08T00:00:00+02:00"
-    END_DATE = "2022-06-11T00:00:00+02:00"
+    START_DATE = "2017-06-05T00:00:00+02:00"
+    END_DATE = "2017-06-12T00:00:00+02:00"
     PRODUCTION_TYPE = "HYDRO"
     PRODUCTION_SUBTYPE = "HYDRO_PUMPED_STORAGE"
 
@@ -37,6 +37,5 @@ if __name__ == "__main__":
     test.request_actual_generation_per_type(START_DATE, END_DATE)
     test.request_actual_generation_per_unit(
         START_DATE, END_DATE, PRODUCTION_SUBTYPE)
-    # test.request_water_reserves(START_DATE, END_DATE) -> date issue for some
-    # reasons
-    test.request_generation_mix_15min_time_scale(START_DATE, END_DATE)
+    test.request_water_reserves(START_DATE, END_DATE)
+    test.request_generation_mix_15min(START_DATE, END_DATE)
